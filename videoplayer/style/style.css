@@ -1,0 +1,16 @@
+.search-bar{
+  margin:20px;
+  text-align: center;
+}
+.search-bar input{
+  width: 75%;
+}
+
+.list-group-item{
+  cursor: pointer;
+  height: 120px;
+  max-height: 140px;
+}
+.list-group-item:hover{
+  background-color: #eee;
+}
