@@ -1,0 +1,38 @@
+
+.input-group{
+  margin: 40px 0px;
+}
+.search{
+  background-color: #009688;
+  font-weight: 600 !important;
+}
+
+.input-group-lg > .form-control, .input-group-lg >
+.input-group-addon, .input-group-lg > .input-group-btn >
+.btn {
+    height: 56px;
+    border-radius: .6em !important;
+  }
+.table td, th{
+  vertical-align: :middle !important;
+  text-align: center !important;
+  font-size: larger;
+}
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+   background-color: white;
+ }
+.table th{
+  background-color: #2d2f3a;
+  color: #009688;
+}
+.weather-header{
+  font-family: helvetica,arial,sans-serif;
+  color: #00afbe;
+}
+.weather-current{
+  font-weight: 700;
+  font-size: small;
+  color: #00afbe;
+  text-transform: uppercase;
+}
