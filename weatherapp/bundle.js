@@ -73,7 +73,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _reducers = __webpack_require__(235);
+	var _reducers = __webpack_require__(240);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -14743,7 +14743,7 @@
 	 *
 	 * @providesModule shallowEqual
 	 * @typechecks
-	 *
+	 * 
 	 */
 
 	'use strict';
@@ -22535,7 +22535,7 @@
 
 	var _search_bar2 = _interopRequireDefault(_search_bar);
 
-	var _weatherList = __webpack_require__(237);
+	var _weatherList = __webpack_require__(235);
 
 	var _weatherList2 = _interopRequireDefault(_weatherList);
 
@@ -24254,69 +24254,6 @@
 	  value: true
 	});
 
-	var _redux = __webpack_require__(166);
-
-	var _reducer_weather = __webpack_require__(236);
-
-	var rootReducer = (0, _redux.combineReducers)({
-	  //state: (state = {}) => state
-	  weather: _reducer_weather.WeatherReducer
-	  //current:CurrentReducer
-	});
-
-	exports.default = rootReducer;
-
-/***/ }),
-/* 236 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports.WeatherReducer = WeatherReducer;
-
-	var _index = __webpack_require__(208);
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-	function WeatherReducer() {
-	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { forecast: [], current: [] };
-	  var action = arguments[1];
-
-
-	  switch (action.type) {
-	    case _index.FETCH_WEATHER:
-	      //return state.concat([action.payload.data]); //not mutating ,
-	      // creating new array which adds data rather than
-	      // pushing into existing state array
-	      return _extends({}, state, {
-	        forecast: [action.payload.data].concat(_toConsumableArray(state.forecast))
-	      });
-	    case _index.CURRENT_WEATHER:
-	      //return  {'current':[action.payload.data, ...state.current],'forecast':[]};
-	      return _extends({}, state, {
-	        current: [action.payload.data].concat(_toConsumableArray(state.current))
-	      });
-	  }
-
-	  return state;
-	}
-
-/***/ }),
-/* 237 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(2);
@@ -24325,11 +24262,11 @@
 
 	var _reactRedux = __webpack_require__(160);
 
-	var _chart = __webpack_require__(239);
+	var _chart = __webpack_require__(236);
 
 	var _chart2 = _interopRequireDefault(_chart);
 
-	var _widget = __webpack_require__(241);
+	var _widget = __webpack_require__(239);
 
 	var _widget2 = _interopRequireDefault(_widget);
 
@@ -24472,7 +24409,55 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps)(WeatherList);
 
 /***/ }),
-/* 238 */
+/* 236 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(160);
+
+	var _reactSparklines = __webpack_require__(237);
+
+	var _lodash = __webpack_require__(238);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var average = function average(data) {
+	  return _lodash2.default.round(_lodash2.default.sum(data) / data.length);
+	};
+
+	exports.default = function (props) {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'chart-line' },
+	    _react2.default.createElement(
+	      _reactSparklines.Sparklines,
+	      { height: 100, width: 120, data: props.data },
+	      _react2.default.createElement(_reactSparklines.SparklinesLine, { color: props.color })
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      null,
+	      '  ',
+	      average(props.data),
+	      ' ',
+	      props.units
+	    )
+	  );
+	};
+
+/***/ }),
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -25442,7 +25427,7 @@
 		 * of patent rights can be found in the PATENTS file in the same directory.
 		 *
 		 * @typechecks
-		 *
+		 * 
 		 */
 
 		/*eslint-disable no-self-compare */
@@ -25548,55 +25533,7 @@
 	;
 
 /***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(160);
-
-	var _reactSparklines = __webpack_require__(238);
-
-	var _lodash = __webpack_require__(240);
-
-	var _lodash2 = _interopRequireDefault(_lodash);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var average = function average(data) {
-	  return _lodash2.default.round(_lodash2.default.sum(data) / data.length);
-	};
-
-	exports.default = function (props) {
-	  return _react2.default.createElement(
-	    'div',
-	    null,
-	    _react2.default.createElement(
-	      _reactSparklines.Sparklines,
-	      { height: 100, width: 120, data: props.data },
-	      _react2.default.createElement(_reactSparklines.SparklinesLine, { color: props.color })
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      null,
-	      '  ',
-	      average(props.data),
-	      ' ',
-	      props.units
-	    )
-	  );
-	};
-
-/***/ }),
-/* 240 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(module, global) {/**
@@ -37954,7 +37891,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(180)(module), (function() { return this; }())))
 
 /***/ }),
-/* 241 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37967,7 +37904,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _lodash = __webpack_require__(240);
+	var _lodash = __webpack_require__(238);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -38011,6 +37948,69 @@
 	    )
 	  );
 	};
+
+/***/ }),
+/* 240 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _redux = __webpack_require__(166);
+
+	var _reducer_weather = __webpack_require__(241);
+
+	var rootReducer = (0, _redux.combineReducers)({
+	  //state: (state = {}) => state
+	  weather: _reducer_weather.WeatherReducer
+	  //current:CurrentReducer
+	});
+
+	exports.default = rootReducer;
+
+/***/ }),
+/* 241 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports.WeatherReducer = WeatherReducer;
+
+	var _index = __webpack_require__(208);
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	function WeatherReducer() {
+	  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { forecast: [], current: [] };
+	  var action = arguments[1];
+
+
+	  switch (action.type) {
+	    case _index.FETCH_WEATHER:
+	      //return state.concat([action.payload.data]); //not mutating ,
+	      // creating new array which adds data rather than
+	      // pushing into existing state array
+	      return _extends({}, state, {
+	        forecast: [action.payload.data].concat(_toConsumableArray(state.forecast))
+	      });
+	    case _index.CURRENT_WEATHER:
+	      //return  {'current':[action.payload.data, ...state.current],'forecast':[]};
+	      return _extends({}, state, {
+	        current: [action.payload.data].concat(_toConsumableArray(state.current))
+	      });
+	  }
+
+	  return state;
+	}
 
 /***/ })
 /******/ ]);
