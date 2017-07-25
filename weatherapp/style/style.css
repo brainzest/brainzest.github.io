@@ -13,10 +13,16 @@
     height: 56px;
     border-radius: .6em !important;
   }
+.table{
+  table-layout:fixed;
+
+}
 .table td, th{
   vertical-align: :middle !important;
   text-align: center !important;
   font-size: larger;
+
+  word-wrap: break-word;
 }
 .table-striped>tbody>tr:nth-child(even)>td,
 .table-striped>tbody>tr:nth-child(even)>th {
@@ -34,9 +40,43 @@
   font-weight: 700;
   font-size: small;
   color: #00afbe;
+
   text-transform: uppercase;
 }
-.chart-line{
-  width: 200px;
-  display: inline-block;
+
+@media screen and (min-width: 1000px) {
+
+  .chart-line {
+    width: 200px;
+    display: inline-block;
+  }
+
+}
+@media only screen and (max-width: 500px) {
+    .chart-line {
+      display: inline-block;
+      width: 75px !important;
+      word-wrap: break-word;
+    }
+    .weather-current{
+      font-weight: 200;
+      font-size: 12px;
+
+    }
+    .weather-header{
+      font-size: 10px;
+    }
+    .h3 > .span{
+      font-size: 10px;
+    }
+
+}
+
+@media screen and (min-width:500px and max-width: 700px) {
+
+  .chart-line {
+    width: 100px;
+    display: inline-block;
+  }
+
 }
